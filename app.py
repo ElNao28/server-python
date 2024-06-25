@@ -19,9 +19,12 @@ def create_model():
 
 # Configurar el registro
 logging.basicConfig(level=logging.DEBUG)
+import os
 
+# Obtener la ruta absoluta del modelo
+model_path = os.path.join(os.getcwd(), 'modeloSc.pkl')
 # Cargar el modelo entrenado
-model = joblib.load('modeloSc.pkl')
+model = joblib.load(model_path)
 app.logger.debug('Modelo cargado correctamente.')
 
 @app.route('/')
