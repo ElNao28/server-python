@@ -2,26 +2,26 @@ from flask import Flask, request, render_template, jsonify
 import joblib
 import pandas as pd
 import logging
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Input
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense, Input
 
 app = Flask(__name__)
 
-def create_model():
-    model = Sequential()
-    model.add(Input(shape=([5])))
-    model.add(Dense(64, activation='relu'))
-    model.add(Dense(32, activation='relu'))
-    model.add(Dense(8, activation='relu'))
-    model.add(Dense(1))
-    model.compile(loss='mean_squared_error', optimizer='adam')
-    return model
+# def create_model():
+#     model = Sequential()
+#     model.add(Input(shape=([5])))
+#     model.add(Dense(64, activation='relu'))
+#     model.add(Dense(32, activation='relu'))
+#     model.add(Dense(8, activation='relu'))
+#     model.add(Dense(1))
+#     model.compile(loss='mean_squared_error', optimizer='adam')
+#     return model
 
 # Configurar el registro
 logging.basicConfig(level=logging.DEBUG)
 
 # Cargar el modelo entrenado
-model = joblib.load('modeloSc.pkl')
+model = joblib.load('modeloLr.pkl')
 app.logger.debug('Modelo cargado correctamente.')
 
 @app.route('/')
@@ -32,11 +32,11 @@ def home():
 def predict():
     try:
         #Obtener los datos enviados en el request
-        AST = 2.0
-        CHE = 4
-        ALP = 7.6
-        ALT = 8.8
-        ALL = 32
+        AST = -1.263055e+00
+        CHE = -1.461745
+        ALP = -1.260266	
+        ALT = -1.218550
+        ALL = 1.427838
 
         #AST = float(request.form['AST'])
         #CHE = int(request.form['CHE'])
@@ -45,7 +45,8 @@ def predict():
         #ALL = int(request.form['ALL'])
         
         # Crear un DataFrame con los datos
-        data_df = pd.DataFrame([[AST, CHE, ALP, ALT, ALL]], columns=['Engine Size(L)', 'Cylinders', 'Consumption Hwy (L/100 km)', 'Fuel Consumption Comb (L/100 km)', 'Fuel Consumption Comb (mpg)'])
+        #data_df = pd.DataFrame([[AST, CHE, ALP, ALT, ALL]], columns=['Engine Size(L)', 'Cylinders', 'Consumption Hwy (L/100 km)', 'Fuel Consumption Comb (L/100 km)', 'Fuel Consumption Comb (mpg)'])
+        data_df = pd.DataFrame([[AST, CHE, ALP, ALT, ALL]], columns=['Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)', 'Fuel Consumption Hwy (L/100 km)', 'Fuel Consumption Comb (mpg)'])
         app.logger.debug(f'DataFrame creado: {data_df}')
         
         # Realizar predicciones
