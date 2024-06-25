@@ -39,10 +39,10 @@ def predict():
         #ALL = 1.427838
 
         AST = float(request.form['AST'])
-        CHE = int(request.form['CHE'])
+        CHE = float(request.form['CHE'])
         ALP = float(request.form['ALP'])
         ALT = float(request.form['ALT'])
-        ALL = int(request.form['ALL'])
+        ALL = float(request.form['ALL'])
         
         # Crear un DataFrame con los datos
         #data_df = pd.DataFrame([[AST, CHE, ALP, ALT, ALL]], columns=['Engine Size(L)', 'Cylinders', 'Consumption Hwy (L/100 km)', 'Fuel Consumption Comb (L/100 km)', 'Fuel Consumption Comb (mpg)'])
