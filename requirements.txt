@@ -1,4 +1,4 @@
-absl-py>=0.15.0
+absl-py==2.1.0
 astunparse==1.6.3
 blinker==1.8.2
 certifi==2024.6.2
@@ -45,7 +45,8 @@ setuptools==70.1.0
 six==1.16.0
 tensorboard==2.16.2
 tensorboard-data-server==0.7.2
-tensorflow==2.13.0
+tensorflow==2.16.1
+tensorflow-intel==2.16.1
 termcolor==2.4.0
 threadpoolctl==3.5.0
 typing_extensions==4.12.2
