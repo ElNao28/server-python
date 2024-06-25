@@ -31,18 +31,18 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Obtener los datos enviados en el request
-        # AST = 1.5
-        # CHE = 3
-        # ALP = 6.4
-        # ALT = 7.5
-        # ALL = 38
+        #Obtener los datos enviados en el request
+        AST = 2.0
+        CHE = 4
+        ALP = 7.6
+        ALT = 8.8
+        ALL = 32
 
-        AST = float(request.form['AST'])
-        CHE = int(request.form['CHE'])
-        ALP = float(request.form['ALP'])
-        ALT = float(request.form['ALT'])
-        ALL = int(request.form['ALL'])
+        #AST = float(request.form['AST'])
+        #CHE = int(request.form['CHE'])
+        #ALP = float(request.form['ALP'])
+        #ALT = float(request.form['ALT'])
+        #ALL = int(request.form['ALL'])
         
         # Crear un DataFrame con los datos
         data_df = pd.DataFrame([[AST, CHE, ALP, ALT, ALL]], columns=['Engine Size(L)', 'Cylinders', 'Consumption Hwy (L/100 km)', 'Fuel Consumption Comb (L/100 km)', 'Fuel Consumption Comb (mpg)'])
